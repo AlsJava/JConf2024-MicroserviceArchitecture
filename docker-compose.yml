@@ -1,0 +1,104 @@
+version: '3.8'
+services:
+  #  kafka Configuration (kraft, no zookeeper)
+  # https://github.com/confluentinc/cp-all-in-one/blob/master/cp-all-in-one-kraft/docker-compose.yml
+  broker:
+    image: confluentinc/cp-kafka:7.6.1
+    hostname: broker
+    container_name: broker
+    ports:
+      - "9092:9092"
+      - "29092:29092"
+      - "19101:9101"
+    networks:
+      - ms_network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: 'CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT'
+      KAFKA_ADVERTISED_LISTENERS: 'PLAINTEXT://broker:29092,PLAINTEXT_HOST://localhost:9092'
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_JMX_PORT: 19101
+      KAFKA_JMX_HOSTNAME: localhost
+      KAFKA_PROCESS_ROLES: 'broker,controller'
+      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@broker:29093'
+      KAFKA_LISTENERS: 'PLAINTEXT://broker:29092,CONTROLLER://broker:29093,PLAINTEXT_HOST://0.0.0.0:9092'
+      KAFKA_INTER_BROKER_LISTENER_NAME: 'PLAINTEXT'
+      KAFKA_CONTROLLER_LISTENER_NAMES: 'CONTROLLER'
+      KAFKA_LOG_DIRS: '/tmp/kraft-combined-logs'
+      # Replace CLUSTER_ID with a unique base64 UUID using "bin/kafka-storage.sh random-uuid"
+      # See https://docs.confluent.io/kafka/operations-tools/kafka-tools.html#kafka-storage-sh
+      # Alternative, use linux command
+      # apt install uuid-runtime
+      # uuidgen --time | tr -d '-' | base64 | cut -b 1-22
+      CLUSTER_ID: 'Yzg4ODc1N2VmOGFmMTFlZD'
+  init-kafka:
+    image: confluentinc/cp-kafka:7.6.1
+    depends_on:
+      - broker
+    networks:
+      - ms_network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    entrypoint: [ '/bin/sh', '-c' ]
+    command: |
+      "
+      echo -e 'Waiting kafka up'
+      sleep 15
+      kafka-topics --bootstrap-server host.docker.internal:29092 --list
+      
+      echo -e 'Creating kafka topics'
+      kafka-topics --bootstrap-server host.docker.internal:29092 --create --if-not-exists --topic get-user-request --replication-factor 1 --partitions 2
+      kafka-topics --bootstrap-server host.docker.internal:29092 --create --if-not-exists --topic get-user-response --replication-factor 1 --partitions 2
+      
+      kafka-topics --bootstrap-server host.docker.internal:29092 --create --if-not-exists --topic create-device-request --replication-factor 1 --partitions 2
+      kafka-topics --bootstrap-server host.docker.internal:29092 --create --if-not-exists --topic create-device-response --replication-factor 1 --partitions 2
+      
+      kafka-topics --bootstrap-server host.docker.internal:29092 --create --if-not-exists --topic delete-device-request --replication-factor 1 --partitions 2
+      kafka-topics --bootstrap-server host.docker.internal:29092 --create --if-not-exists --topic delete-device-response --replication-factor 1 --partitions 2
+      
+      echo -e 'Successfully created the following topics:'
+      kafka-topics --bootstrap-server host.docker.internal:29092 --list
+      "
+  #  Services Configuration
+  discovery_service:
+    build: DiscoveryService
+    ports:
+      - "7001:7001"
+    networks:
+      - ms_network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+  configuration_service:
+    build: ConfigurationService
+    ports:
+      - "8001:8001"
+    depends_on:
+      - discovery_service
+    volumes:
+      - config-repository:/ConfigurationRepository
+    networks:
+      - ms_network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+  gateway_service:
+    build: GatewayService
+    ports:
+      - "9001:9001"
+    depends_on:
+      - configuration_service
+    networks:
+      - ms_network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+volumes:
+  config-repository:
+
+networks:
+  ms_network:
+    driver: bridge
