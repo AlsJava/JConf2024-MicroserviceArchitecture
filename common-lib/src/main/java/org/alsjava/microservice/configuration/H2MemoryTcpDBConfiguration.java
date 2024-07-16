@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import java.sql.SQLException;
 
 /**
- * Example connection: jdbc:h2:tcp://localhost:11000/mem:DeviceDB
+ * Example connection: jdbc:h2:tcp://localhost:11000/mem:DBName
  */
 @ConditionalOnProperty(prefix = "db.h2.debug", name = "enabled", havingValue = "true")
 @Configuration(proxyBeanMethods = false)

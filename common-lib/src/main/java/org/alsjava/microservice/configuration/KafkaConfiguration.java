@@ -13,7 +13,7 @@ import java.net.SocketTimeoutException;
 
 @Slf4j
 @Configuration
-@ConditionalOnProperty(prefix = "kafka", name = "backoff.interval")
+@ConditionalOnProperty(prefix = "kafka", name = "enabled", havingValue = "true")
 public class KafkaConfiguration {
 
     @Value(value = "${kafka.retry.interval}")

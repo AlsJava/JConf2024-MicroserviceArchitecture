@@ -8,4 +8,5 @@ spring:
     add-properties: true
 db:
   h2:
-    debug: true
+    debug:
+      enabled: true

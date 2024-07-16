@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
-@ConditionalOnProperty(prefix = "kafka", name = "bootstrap-servers")
+@ConditionalOnProperty(prefix = "kafka", name = "enabled", havingValue = "true")
 public class KafkaGeneralConfigurator {
 
     @Value("${kafka.bootstrap-servers}")
