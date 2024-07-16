@@ -1,0 +1,19 @@
+management:
+  endpoint:
+    health:
+      show-details: ALWAYS
+    loggers:
+      enabled: true
+    env:
+      show-values: ALWAYS
+    configprops:
+      show-values: ALWAYS
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  info:
+    build:
+      enabled: true
+    java:
+      enabled: true

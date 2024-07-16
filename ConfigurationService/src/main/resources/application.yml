@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: configuration-service
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations:
+            - ${CONFIG_DATA_PATH:file:///C:\Users\aluis\IdeaProjects\JConf2024-MicroserviceArchitecture\ConfigurationRepository}/microservices
+server:
+  port: 8001
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URL:http://localhost:7001/eureka}
+#      defaultZone: ${EUREKA_URL:http://host.docker.internal:7001/eureka}
+  instance:
+    prefer-ip-address: true
+management:
+  endpoint:
+    health:
+      show-details: ALWAYS
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  info:
+    build:
+      enabled: true

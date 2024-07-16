@@ -1,0 +1,3 @@
+pattern:
+  cqrs:
+    enabled: ${CQRS_ENABLED:true}

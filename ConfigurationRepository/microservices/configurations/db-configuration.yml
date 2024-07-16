@@ -1,0 +1,17 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+  datasource:
+    hikari:
+      idle-timeout: 30000
+      max-lifetime: 1800000
+      maximum-pool-size: 2
+      minimum-idle: 2
+    url: jdbc:h2:mem:DeviceDB
+    username: demo
+    password:
+    type: com.zaxxer.hikari.HikariDataSource
+  jdbc:
+    template:
+      query-timeout: 4

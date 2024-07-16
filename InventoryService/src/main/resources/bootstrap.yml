@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: inventory-service
+  cloud:
+    config:
+      uri: 'http://localhost:8001'
+      discovery:
+        service-id: configuration-service
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:7001/eureka}
+#      defaultZone: ${EUREKA_URL:http://host.docker.internal:7001/eureka}
+  instance:
+    prefer-ip-address: true

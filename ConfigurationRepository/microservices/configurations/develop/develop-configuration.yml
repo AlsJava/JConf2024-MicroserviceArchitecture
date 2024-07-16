@@ -1,0 +1,11 @@
+spring:
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  devtools:
+    add-properties: true
+db:
+  h2:
+    debug: true

@@ -1,0 +1,4 @@
+cors:
+  enabled: ${CORS_ENABLED:true}
+  allowed:
+    origins: ${CORS_ORIGINS:*}

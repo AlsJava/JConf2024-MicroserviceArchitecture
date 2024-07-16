@@ -1,0 +1,7 @@
+kafka:
+  inventory-service:
+    action:
+      group: dfoisjkoifdkofd
+      topics:
+        request: ddssd
+        response: sdsd

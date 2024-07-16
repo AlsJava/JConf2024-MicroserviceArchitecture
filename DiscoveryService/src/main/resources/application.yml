@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: discovery-service
+server:
+  port: 7001
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+    serviceUrl:
+      default-zone: 'http://${eureka.instance.hostname}:${server.port}/eureka/'
+  instance:
+    prefer-ip-address: true
+    hostname: 'localhost'
+  environment: DEMO
+logging:
+  level:
+    com:
+      netflix:
+        eureka: OFF
+management:
+  endpoint:
+    health:
+      show-details: ALWAYS
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  info:
+    build:
+      enabled: true
