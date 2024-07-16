@@ -19,7 +19,7 @@
         <module>DiscoveryService</module>
         <module>InventoryService</module>
         <module>InvoiceService</module>
-        <module>common-lib</module>
+        <module>CommonLib</module>
         <module>GatewayService</module>
     </modules>
     <properties>
