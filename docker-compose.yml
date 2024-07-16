@@ -52,14 +52,14 @@ services:
       kafka-topics --bootstrap-server host.docker.internal:29092 --list
       
       echo -e 'Creating kafka topics'
-      kafka-topics --bootstrap-server host.docker.internal:29092 --create --if-not-exists --topic get-user-request --replication-factor 1 --partitions 2
-      kafka-topics --bootstrap-server host.docker.internal:29092 --create --if-not-exists --topic get-user-response --replication-factor 1 --partitions 2
+      kafka-topics --bootstrap-server host.docker.internal:29092 --create --if-not-exists --topic get-user-request --replication-factor 1 --partitions 16
+      kafka-topics --bootstrap-server host.docker.internal:29092 --create --if-not-exists --topic get-user-response --replication-factor 1 --partitions 16
       
-      kafka-topics --bootstrap-server host.docker.internal:29092 --create --if-not-exists --topic create-device-request --replication-factor 1 --partitions 2
-      kafka-topics --bootstrap-server host.docker.internal:29092 --create --if-not-exists --topic create-device-response --replication-factor 1 --partitions 2
+      kafka-topics --bootstrap-server host.docker.internal:29092 --create --if-not-exists --topic create-device-request --replication-factor 1 --partitions 16
+      kafka-topics --bootstrap-server host.docker.internal:29092 --create --if-not-exists --topic create-device-response --replication-factor 1 --partitions 16
       
-      kafka-topics --bootstrap-server host.docker.internal:29092 --create --if-not-exists --topic delete-device-request --replication-factor 1 --partitions 2
-      kafka-topics --bootstrap-server host.docker.internal:29092 --create --if-not-exists --topic delete-device-response --replication-factor 1 --partitions 2
+      kafka-topics --bootstrap-server host.docker.internal:29092 --create --if-not-exists --topic delete-device-request --replication-factor 1 --partitions 16
+      kafka-topics --bootstrap-server host.docker.internal:29092 --create --if-not-exists --topic delete-device-response --replication-factor 1 --partitions 16
       
       echo -e 'Successfully created the following topics:'
       kafka-topics --bootstrap-server host.docker.internal:29092 --list
