@@ -11,16 +11,16 @@ public class RouteConfiguration {
     @Bean
     public RouteLocator customRoutes(RouteLocatorBuilder builder) {
         return builder.routes()
-                .route("route-inventory-service", route -> route.path("/api/inventory/**")
+                .route("route-device-service", route -> route.path("/api/devices/**")
                         .filters(filter -> filter.stripPrefix(2).circuitBreaker(config -> config
                                 .setName("Fallback")
                                 .setFallbackUri("forward:/fallback")))
-                        .uri("lb://INVENTORY-SERVICE"))
-                .route("route-invoice-service", route -> route.path("/api/invoice/**")
+                        .uri("lb://DEVICE-SERVICE"))
+                .route("route-user-service", route -> route.path("/api/users/**")
                         .filters(filter -> filter.stripPrefix(2).circuitBreaker(config -> config
                                 .setName("Fallback")
                                 .setFallbackUri("forward:/fallback")))
-                        .uri("lb://INVOICE-SERVICE"))
+                        .uri("lb://USER-SERVICE"))
                 .build();
     }
 
