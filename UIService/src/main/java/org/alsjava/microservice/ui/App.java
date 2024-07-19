@@ -16,10 +16,9 @@ import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
-import edu.applaudo.project.ui.view.DevicesView;
-import edu.applaudo.project.ui.view.GraphQLView;
-import edu.applaudo.project.ui.view.KafkaView;
-import edu.applaudo.project.ui.view.UsersView;
+import org.alsjava.microservice.ui.view.DevicesView;
+import org.alsjava.microservice.ui.view.KafkaView;
+import org.alsjava.microservice.ui.view.UsersView;
 import org.springframework.boot.info.BuildProperties;
 
 @Route("")
@@ -62,7 +61,6 @@ public class App extends AppLayout {
         tabs.add(
                 createTab(VaadinIcon.SERVER, "Devices", DevicesView.class),
                 createTab(VaadinIcon.USERS, "Users", UsersView.class),
-                createTab(VaadinIcon.MAGNET, "GraphQL", GraphQLView.class),
                 createTab(VaadinIcon.DASHBOARD, "Kafka", KafkaView.class)
         );
         tabs.setOrientation(Tabs.Orientation.VERTICAL);
