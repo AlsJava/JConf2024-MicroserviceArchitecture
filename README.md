@@ -4,7 +4,39 @@ Project repository to demostrate Microservice Architecture working.
 
 ## Deep dive into microservices architecture in Java Spring
 
+Have you had problems implementing microservices? Are some things more complex to solve and do you feel that it is a
+waste of resources? Well, come join this talk where we will talk about scaling, implementation and use of this
+beautiful architecture in today's applications
+
 ## Description
+
+Carrying out an implementation of this architecture is more complex than you can imagine, the fact of not knowing the
+concepts and foundation that compose it, leads to a partial or incomplete implementation, giving rise to problems that sometimes
+In turn, they propose solutions that prevent the benefits of this architecture from being appreciated.
+
+Among the brightest features of micro-services applications; is its scaling (horizontal and vertical),
+since these applications scale automatically and on demand, and if the result of their implementation does not give way to
+this particular feature then we are faced with a case of a poor implementation of it.
+
+**The simple fact of not knowing fundamental concepts and/or elements that make up this architecture will lead you to a
+chaos and along with that an implementation that will provide more headaches than benefits.**
+
+With this talk, I seek to ensure that whoever decides to implement this type of service-oriented architecture can do so.
+in a healthy way and in the correct scenarios, since you cannot always use it due to:
+
+- Application dimensions:
+  - Users quantity
+  - Costs
+- User needs in the application:
+  - Type of connections
+  - Legal restrictions with data
+  - Hardware limitations
+- Other factors that will affect development:
+  - Code workflow
+  - Deployment of the code to environments
+  - Team experience (group and individual)
+  - Internal team training time
+  - Documentation habits
 
 # Español
 
@@ -33,7 +65,7 @@ de una forma saludable y en los escenarios correctos, puesto no siempre puedes u
 - Dimensiones de la aplicación:
     - cantidad de usuarios
     - Costos
-- Necesidades del usuario en la aplicación
+- Necesidades del usuario en la aplicación:
     - Tipo de conexiones
     - Restricciones de ley con la data
     - Limitaciones de hardware
@@ -51,19 +83,19 @@ de una forma saludable y en los escenarios correctos, puesto no siempre puedes u
 
 Entities to use
 
-![Clonación](Documentation/Diagrams/DB.drawio.png?raw=true)
+![Clonación](Documentation/Diagrams/DB.drawio.png)
 
 ## Architecture
 
 General viw to understand how user interact
 
-![Clonación](Documentation/Diagrams/Architecture.drawio.png?raw=true)
+![Clonación](Documentation/Diagrams/Architecture.drawio.png)
 
 ## Project Architecture
 
 Developer view to understand how to build a project
 
-![Clonación](Documentation/Diagrams/ProjectArchitecture.drawio.png?raw=true)
+![Clonación](Documentation/Diagrams/ProjectArchitecture.drawio.png)
 
 # Business Rules
 
