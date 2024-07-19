@@ -1,0 +1,9 @@
+spring:
+  cloud:
+    config:
+      import:
+        - configuration/develop/develop-configuration.yml
+        - configuration/pattern/cors-configuration.yml
+        - configuration/actuator-general-configuration.yml
+server:
+  port: 8080
