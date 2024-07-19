@@ -63,9 +63,7 @@ General viw to understand how user interact
 
 Developer view to understand how to build a project
 
-[//]: # (TODO Agregar la libreria común con su propósito)
-
-![Clonación](Documentation/Diagrams/Project Architecture.drawio.png?raw=true)
+![Clonación](Documentation/Diagrams/ProjectArchitecture.drawio.png?raw=true)
 
 # Business Rules
 
@@ -74,10 +72,6 @@ To define and have a project with a functional objective we have the following r
 - When you create a USER have to create a Device too
 - A user exist only when have 1 or more devices
 - Report by users of the number of devices (real time cache). See Reports section
-
-## Reports
-
-[//]: # (TODO finish report)
 
 # Definitions
 
@@ -88,8 +82,6 @@ To define and have a project with a functional objective we have the following r
 # Microservice Flows
 
 ## Users Microservices
-
-[//]: # (TODO Define Request and response Body)
 
 ### Get User
 
@@ -146,26 +138,17 @@ Remove a device from User Devices
 # Technologies
 
 - [OpenAPI](https://springdoc.org/v2/) (Documentation)
-- GraphQL (https://www.baeldung.com/spring-graphql)
-- Authentication and Authorization (Keycloak)
 - Gateway (Kong or [Spring Gateway](https://spring.io/guides/gs/gateway/)) (With flows)
 - Kafka
   - [Reply Pattern](https://dzone.com/articles/synchronous-kafka-using-spring-request-reply-1)
   - [Retry Pattern](https://www.baeldung.com/spring-retry-kafka-consumer)
 - Docker
-- [Redis](https://redis.io/docs/stack/get-started/install/docker/) (Cache Report
-  demo) [Spring redis](https://github.com/redis/redis-om-spring)
 - Spring Boot
 - Vaadin (UI)
 
-# To implement (Still not implemented)
-
-- Finish UI
-- Test
-
 # kafka
 
-To run this project need to download and run [Kafka](https://kafka.apache.org/quickstart).
+To run this project need to download and run [Kafka](https://kafka.apache.org/quickstart). Check script directory
 
 ## Kafka Visual Tool
 
@@ -179,13 +162,7 @@ To run this project need to download and run [Kafka](https://kafka.apache.org/qu
   to configure @ComponentScan with the different packages
 - When need a transaction have to use SAGA Pattern
 - Any request have to be implemented using Command Pattern
-- Rebuild docker run `docker compose build`
 - If you get "Could not resolve placeholder Exception" maybe you forgot configure the environment variables
-
-# Why we need GraphQL?
-
-when sometimes need to reduce the request to different endpoints, example, list of devices from a user, without GraphQL
-need to do 2 request
 
 # How to run Solution (locally, partial docker to debug services)
 
@@ -195,13 +172,8 @@ Now you have to run the services in order
 
 - Configure environment variables. **See** [Intellij Configuration](Documentation/EnvironmentVariables/README.md)
 - Run docker compose modules: **"redis"**, **"keycloak"**, **"broker"**
-- Run docker compose module: **"init-kafka"** to create topics. (kafka have to be running)
 - Run **DiscoveryService**
-- Read **ConfigurationRepository** [README.md](ConfigurationRepository/README.md)
 - Run **ConfigurationService**
-- Import Keycloak Configuration in **'Documentation/keycloak/Keycloak-Realm-Export.json'**
 - Now you can up your other services with no limitations: **"UserService"**, **"DeviceService"**, **"GatewayService"**,
-  **"MSPractice"**
-- The last service to up is "GraphQLService", because use H2 in memory
 
 
