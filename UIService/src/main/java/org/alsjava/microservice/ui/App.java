@@ -17,7 +17,6 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
 import org.alsjava.microservice.ui.view.DevicesView;
-import org.alsjava.microservice.ui.view.KafkaView;
 import org.alsjava.microservice.ui.view.UsersView;
 import org.springframework.boot.info.BuildProperties;
 
@@ -38,7 +37,6 @@ public class App extends AppLayout {
         viewTitle.getStyle()
                 .set("font-size", "var(--lumo-font-size-l)")
                 .set("margin", "0");
-
         Div panel = new Div();
         HorizontalLayout wrapper = new HorizontalLayout(toggle, viewTitle);
         wrapper.setAlignItems(FlexComponent.Alignment.CENTER);
@@ -60,8 +58,7 @@ public class App extends AppLayout {
         Tabs tabs = new Tabs();
         tabs.add(
                 createTab(VaadinIcon.SERVER, "Devices", DevicesView.class),
-                createTab(VaadinIcon.USERS, "Users", UsersView.class),
-                createTab(VaadinIcon.DASHBOARD, "Kafka", KafkaView.class)
+                createTab(VaadinIcon.USERS, "Users", UsersView.class)
         );
         tabs.setOrientation(Tabs.Orientation.VERTICAL);
         tabs.setSelectedIndex(0);

@@ -5,6 +5,7 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteAlias;
+import org.alsjava.microservice.client.UserClient;
 import org.alsjava.microservice.model.UserDTO;
 import org.alsjava.microservice.ui.App;
 
@@ -13,9 +14,12 @@ import org.alsjava.microservice.ui.App;
 @RouteAlias(value = "users", layout = App.class)
 public class UsersView extends Div {
 
+    private final UserClient userClient;
+
     private final Grid<UserDTO> grid = new Grid<>();
 
-    public UsersView() {
+    public UsersView(UserClient userClient) {
+        this.userClient = userClient;
         add(grid);
         grid.addColumn(UserDTO::getId).setHeader("ID");
         grid.addColumn(UserDTO::getName).setHeader("Name");

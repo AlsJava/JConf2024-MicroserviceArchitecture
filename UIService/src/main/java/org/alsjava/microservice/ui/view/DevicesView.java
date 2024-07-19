@@ -1,11 +1,14 @@
 package org.alsjava.microservice.ui.view;
 
+import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteAlias;
+import org.alsjava.microservice.client.DeviceClient;
 import org.alsjava.microservice.model.DeviceDTO;
+import org.alsjava.microservice.model.UserDTO;
 import org.alsjava.microservice.ui.App;
 
 @PageTitle("Devices")
@@ -13,15 +16,18 @@ import org.alsjava.microservice.ui.App;
 @RouteAlias(value = "devices", layout = App.class)
 public class DevicesView extends Div {
 
-    private final Grid<DeviceDTO> grid = new Grid<>();
+    private final DeviceClient deviceClient;
 
-    public DevicesView() {
+    private final Grid<DeviceDTO> grid = new Grid<>();
+    private final ComboBox<UserDTO> cbUser = new ComboBox<>();
+
+    public DevicesView(DeviceClient deviceClient) {
+        this.deviceClient = deviceClient;
         add(grid);
         grid.addColumn(DeviceDTO::getId).setHeader("ID");
         grid.addColumn(DeviceDTO::getName).setHeader("Name");
         grid.addColumn(DeviceDTO::getDescription).setHeader("Description");
         grid.addColumn(DeviceDTO::getDeviceType).setHeader("Type");
-        // TODO falta la data
-        // TODO adicionar la logica para crear dispositivos.
+//        grid.setItems(query -> deviceClient.list(query.getPage(), query.getPageSize()).stream());
     }
 }
