@@ -15,7 +15,7 @@ import java.util.UUID;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/devices")
+@RequestMapping
 public class DeviceController {
 
     private final DeviceService deviceService;
