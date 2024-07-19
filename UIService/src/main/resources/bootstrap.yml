@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: ui-application
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        serviceId: configuration-service
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${eurekaUrl:http://host.docker.internal:7001/eureka}
+    registryFetchIntervalSeconds: 1
+  instance:
+    hostname: localhost
+    leaseRenewalIntervalInSeconds: 1

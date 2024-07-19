@@ -23,8 +23,10 @@
         <module>DeviceServiceLib</module>
         <module>UserService</module>
         <module>UserServiceLib</module>
+        <module>UIService</module>
     </modules>
     <properties>
+        <vaadin.version>24.4.6</vaadin.version>
         <common-lib.version>1.0.0</common-lib.version>
         <device-service-lib.version>1.0.0</device-service-lib.version>
         <user-service-lib.version>1.0.0</user-service-lib.version>
