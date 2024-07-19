@@ -39,7 +39,7 @@ public class KafkaGeneralConfigurator {
      * @return Consumer configuration
      */
     public <T> Map<String, Object> consumerConfigs(String groupId, Class<T> defaultType) {
-        return consumerJSONConfigs(groupId);
+        return consumerJSONConfigs(groupId, defaultType);
     }
 
     /**
