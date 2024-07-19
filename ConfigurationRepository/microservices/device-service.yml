@@ -2,9 +2,10 @@ spring:
   config:
     import:
       - configurations/develop/develop-configuration.yml
-      - configurations/kafka-topics/inventory-kafka-topics.yml
+      - configurations/kafka-topics/device-kafka-topics.yml
       - configurations/pattern/cors-configuration.yml
       - configurations/pattern/cqrs-configuration.yml
+      - configurations/pattern/saga-configuration.yml
       - configurations/actuator-general-configuration.yml
       - configurations/db-configuration.yml
       - configurations/kafka-general-configuration.yml

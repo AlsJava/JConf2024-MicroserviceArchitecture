@@ -1,13 +1,16 @@
 package org.alsjava.microservice.configuration;
 
+import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.annotation.Bean;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
+import org.springframework.kafka.core.KafkaAdmin;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
 import org.springframework.kafka.listener.DefaultErrorHandler;
@@ -31,10 +34,8 @@ public class KafkaGeneralConfigurator {
     @Value("${kafka.trust-package}")
     private String trustPackage;
 
-    @Value("${kafka.timeoout}")
+    @Value("${kafka.timeout}")
     private long timeout;
-
-    // TODO implement default methods
 
     /**
      * Default Consumer
@@ -100,5 +101,12 @@ public class KafkaGeneralConfigurator {
         repliesContainer.getContainerProperties().setGroupId(groupId);
         repliesContainer.setAutoStartup(false);
         return repliesContainer;
+    }
+
+    @Bean
+    public KafkaAdmin kafkaAdmin() {
+        Map<String, Object> configs = new HashMap<>();
+        configs.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
+        return new KafkaAdmin(configs);
     }
 }

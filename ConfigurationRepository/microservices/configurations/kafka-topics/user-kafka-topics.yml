@@ -1,0 +1,7 @@
+kafka:
+  users:
+    get:
+      group: get-user-group
+      topics:
+        request: get-user-request
+        response: get-user-response

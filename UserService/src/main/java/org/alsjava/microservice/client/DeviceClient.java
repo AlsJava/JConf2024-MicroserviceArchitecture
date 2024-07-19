@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit;
 public class DeviceClient {
 
     private final ReplyingKafkaTemplate<String, CreateDeviceRequest, CreateDeviceResponse> createDeviceReplyingTemplate;
-    @Value("${pattern.client.timeout}")
+    @Value("${kafka.timeout}")
     private long clientTimeout;
 
     @Value("${kafka.devices.create.topics.request}")

@@ -1,0 +1,12 @@
+kafka:
+  devices:
+    create:
+      group: create-device-group
+      topics:
+        request: create-device-request
+        response: create-device-response
+    delete:
+      group: delete-device-group
+      topics:
+        request: delete-device-request
+        response: delete-device-response

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-@ConditionalOnProperty(prefix = "general", name = "cqrs.enable", havingValue = "true")
+@ConditionalOnProperty(prefix = "pattern", name = "cqrs.enabled", havingValue = "true")
 @RequiredArgsConstructor
 @Service
 public class CommandBus {

@@ -4,6 +4,7 @@ kafka:
 #  bootstrap-servers: ${KAFKA_URL:http://host.docker.internal:29092}
   trust-package: org.alsjava.microservice.*
   timeout: 60000
+  partitions: 8
   retry:
     interval: 5000
     max_attempts: 4

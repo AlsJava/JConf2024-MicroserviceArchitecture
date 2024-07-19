@@ -15,11 +15,11 @@ import java.sql.SQLException;
 @Configuration(proxyBeanMethods = false)
 public class H2MemoryTcpDBConfiguration {
 
-    @Value("${db.h2.debug.port]")
+    @Value("${db.h2.debug.port}")
     private int h2DebugPort;
 
     @Bean(initMethod = "start", destroyMethod = "stop")
     public Server inMemoryH2DatabaseaServer() throws SQLException {
-        return Server.createTcpServer(  "-tcp", "-tcpAllowOthers", "-tcpPort", String.valueOf(h2DebugPort));
+        return Server.createTcpServer(  "-tcp", "-tcpAllowOthers", "-tcpPort", h2DebugPort + "");
     }
 }
