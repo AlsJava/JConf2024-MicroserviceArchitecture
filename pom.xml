@@ -17,12 +17,18 @@
         <module>ConfigurationRepository</module>
         <module>ConfigurationService</module>
         <module>DiscoveryService</module>
-        <module>InventoryService</module>
-        <module>InvoiceService</module>
-        <module>CommonLib</module>
         <module>GatewayService</module>
+        <module>CommonLib</module>
+        <module>DeviceService</module>
+        <module>DeviceServiceLib</module>
+        <module>UserService</module>
+        <module>UserServiceLib</module>
     </modules>
     <properties>
+        <common-lib.version>1.0.0</common-lib.version>
+        <device-service-lib.version>1.0.0</device-service-lib.version>
+        <user-service-lib.version>1.0.0</user-service-lib.version>
+        <openapi.version>2.6.0</openapi.version>
         <spring-cloud.version>2023.0.3</spring-cloud.version>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
