@@ -45,5 +45,10 @@
             <artifactId>user-service-lib</artifactId>
             <version>${user-service-lib.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.alsjava.microservice</groupId>
+            <artifactId>device-service-lib</artifactId>
+            <version>${device-service-lib.version}</version>
+        </dependency>
     </dependencies>
 </project>
