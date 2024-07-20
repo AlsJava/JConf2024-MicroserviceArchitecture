@@ -1,5 +1,7 @@
 # Configuration Service
 
+Share configurations using Service names. Can use configuration files as import to reduce repetition
+
 ## How to visualize properties
 
 1. Open a web browser

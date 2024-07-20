@@ -1,7 +1,9 @@
 spring:
   jpa:
+    defer-datasource-initialization: true
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
+    database-platform: org.hibernate.dialect.H2Dialect
   datasource:
     hikari:
       idle-timeout: 30000

@@ -1,7 +1,0 @@
-kafka:
-  invoice-service:
-    action:
-      group: dfoisjkoifdkofd
-      topics:
-        request: ddssd
-        response: sdsd

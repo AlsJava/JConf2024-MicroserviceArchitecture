@@ -14,6 +14,6 @@ import org.alsjava.microservice.pattern.command.Command;
 public class GetUsersCommand extends Command<ListUserResponse> {
 
     private int page;
-    private int size;
+    private int pageSize;
 
 }

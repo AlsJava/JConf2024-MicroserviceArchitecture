@@ -23,8 +23,12 @@ public class DeviceService {
         return commandBus.sendCommand(GetDeviceCommand.builder().id(id).build());
     }
 
-    public ListDeviceResponse list(UUID userId, int page, int size) {
-        return commandBus.sendCommand(GetDevicesCommand.builder().userId(userId).page(page).size(size).build());
+    public ListDeviceResponse list(UUID userId, int page, int pageSize) {
+        return commandBus.sendCommand(GetDevicesCommand.builder().userId(userId).page(page).pageSize(pageSize).build());
+    }
+
+    public Long count(UUID userId) {
+        return commandBus.sendCommand(CountDevicesCommand.builder().userId(userId).build());
     }
 
     public CreateDeviceResponse create(CreateDeviceRequest createDeviceRequest) {

@@ -1,14 +1,15 @@
 spring:
-  cloud:
-    config:
-      import:
-        - configuration/develop/develop-configuration.yml
-        - configuration/kafka-topics/inventory-kafka-topics.yml
-        - configuration/pattern/cors-configuration.yml
-        - configuration/pattern/cqrs-configuration.yml
-        - configuration/actuator-general-configuration.yml
-        - configuration/db-configuration.yml
-        - configuration/kafka-general-configuration.yml
+  config:
+    import:
+      - configurations/develop/db-develop-configuration.yml
+      - configurations/develop/develop-configuration.yml
+      - configurations/kafka-topics/device-kafka-topics.yml
+      - configurations/pattern/cors-configuration.yml
+      - configurations/pattern/cqrs-configuration.yml
+      - configurations/pattern/saga-configuration.yml
+      - configurations/actuator-general-configuration.yml
+      - configurations/db-configuration.yml
+      - configurations/kafka-general-configuration.yml
 server:
   port: 8020
 db:

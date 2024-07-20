@@ -17,6 +17,6 @@ public class GetDevicesCommand extends Command<ListDeviceResponse> {
 
     private UUID userId;
     private int page;
-    private int size;
+    private int pageSize;
 
 }
