@@ -28,8 +28,13 @@ public class DeviceController {
     @GetMapping("/list")
     public ResponseEntity<ListDeviceResponse> list(@RequestParam(name = "userId") UUID userId,
                                                    @RequestParam(name = "page", defaultValue = "0", required = false) int page,
-                                                   @RequestParam(name = "size", defaultValue = "10", required = false) int size) {
-        return ResponseEntity.ok(deviceService.list(userId, page, size));
+                                                   @RequestParam(name = "pageSize", defaultValue = "10", required = false) int pageSize) {
+        return ResponseEntity.ok(deviceService.list(userId, page, pageSize));
+    }
+
+    @GetMapping("/count")
+    public ResponseEntity<Long> count(@RequestParam(name = "userId") UUID userId) {
+        return ResponseEntity.ok(deviceService.count(userId));
     }
 
     @PostMapping("/create")

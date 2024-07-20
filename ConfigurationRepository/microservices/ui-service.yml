@@ -6,3 +6,6 @@ spring:
       - configurations/actuator-general-configuration.yml
 server:
   port: 8080
+service:
+  gateway:
+    url: ${SERVICE_GATEWAY_URL:http://localhost:8010}

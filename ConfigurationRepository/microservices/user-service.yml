@@ -1,6 +1,7 @@
 spring:
   config:
     import:
+      - configurations/develop/db-develop-configuration.yml
       - configurations/develop/develop-configuration.yml
       - configurations/kafka-topics/device-kafka-topics.yml
       - configurations/kafka-topics/user-kafka-topics.yml

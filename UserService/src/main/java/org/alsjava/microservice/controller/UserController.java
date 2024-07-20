@@ -27,8 +27,13 @@ public class UserController {
 
     @GetMapping("/list")
     public ResponseEntity<ListUserResponse> list(@RequestParam(name = "page", defaultValue = "0", required = false) int page,
-                                                 @RequestParam(name = "size", defaultValue = "10", required = false) int size) {
-        return ResponseEntity.ok(userService.list(page, size));
+                                                 @RequestParam(name = "pageSize", defaultValue = "10", required = false) int pageSize) {
+        return ResponseEntity.ok(userService.list(page, pageSize));
+    }
+
+    @GetMapping("/count")
+    public ResponseEntity<Long> count() {
+        return ResponseEntity.ok(userService.count());
     }
 
     @PostMapping("/create")

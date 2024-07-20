@@ -3,3 +3,4 @@ node_modules/
 src/main/frontend/generated/
 pnpmfile.js
 vite.generated.ts
+.flow-node-tasks.lock

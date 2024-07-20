@@ -6,7 +6,10 @@ import org.alsjava.microservice.model.request.CreateUserRequest;
 import org.alsjava.microservice.model.request.UpdateUserRequest;
 import org.alsjava.microservice.model.response.*;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.service.annotation.*;
 
 import java.util.UUID;
 
@@ -16,21 +19,25 @@ import java.util.UUID;
  *
  * @see <a href="https://www.baeldung.com/spring-6-http-interface">Declarative Interface</a>
  */
+@HttpExchange("/api/users")
 public interface UserClient {
 
-    @GetMapping("/get/{id}")
+    @GetExchange("/get/{id}")
     ResponseEntity<GetUserResponse> get(@Valid @PathVariable @NotNull UUID id);
 
-    @GetMapping("/list")
+    @GetExchange("/list")
     ResponseEntity<ListUserResponse> list(@RequestParam(name = "page", defaultValue = "0", required = false) int page,
-                                          @RequestParam(name = "size", defaultValue = "10", required = false) int size);
+                                          @RequestParam(name = "pageSize", defaultValue = "10", required = false) int pageSize);
 
-    @PostMapping("/create")
+    @GetExchange("/count")
+    ResponseEntity<Long> count();
+
+    @PostExchange("/create")
     ResponseEntity<CreateUserResponse> create(@Valid @RequestBody CreateUserRequest createUserRequest);
 
-    @PutMapping("/update")
+    @PutExchange("/update")
     ResponseEntity<UpdateUserResponse> update(@Valid @RequestBody UpdateUserRequest updateUserRequest);
 
-    @DeleteMapping("/{id}")
+    @DeleteExchange("/{id}")
     ResponseEntity<DeleteUserResponse> delete(@Valid @PathVariable @NotNull UUID id);
 }

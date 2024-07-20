@@ -5,11 +5,12 @@
 - EUREKA_URL=http://localhost:7001/eureka
 - CONFIG_DATA_PATH=file:///C:\Users\aluis\IdeaProjects\JConf2024-MicroserviceArchitecture\ConfigurationRepository
 - KAFKA_URL=http://localhost:9092
+- SERVICE_GATEWAY_URL=http://localhost:8010
 
 ### Fast way to copy and paste on Intellij
 
 ```
-CONFIG_DATA_PATH=file:///C:\Users\aluis\IdeaProjects\JConf2024-MicroserviceArchitecture\ConfigurationRepository;EUREKA_URL=http://localhost:7001/eureka;KAFKA_URL=http://localhost:9092
+CONFIG_DATA_PATH=file:///C:\Users\aluis\IdeaProjects\JConf2024-MicroserviceArchitecture\ConfigurationRepository;EUREKA_URL=http://localhost:7001/eureka;KAFKA_URL=http://localhost:9092;SERVICE_GATEWAY_URL=http://localhost:8010
 ```
 
 1. Open the Project Configuration ![Clonación](Intellij-Environment-Variables-00.png)

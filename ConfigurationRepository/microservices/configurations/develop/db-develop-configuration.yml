@@ -1,0 +1,4 @@
+db:
+  h2:
+    debug:
+      enabled: true

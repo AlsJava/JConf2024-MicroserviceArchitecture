@@ -23,7 +23,7 @@ public class GetDevicesCommandHandler implements CommandHandler<ListDeviceRespon
 
     @Override
     public ListDeviceResponse handle(GetDevicesCommand command) {
-        PageRequest pageRequest = PageRequest.of(command.getPage(), command.getSize());
+        PageRequest pageRequest = PageRequest.of(command.getPage(), command.getPageSize());
         return ListDeviceResponse.builder().devices(deviceRepository.findAllByUserId(command.getUserId(), pageRequest)
                         .stream()
                         .map(DeviceEntity::toDTO)
