@@ -8,7 +8,7 @@ spring:
       server:
         native:
           search-locations:
-            - ${CONFIG_DATA_PATH:file:///C:\Users\aluis\IdeaProjects\JConf2024-MicroserviceArchitecture\ConfigurationRepository}/microservices
+            - ${CONFIG_DATA_PATH}/microservices
 server:
   port: 8001
 eureka:

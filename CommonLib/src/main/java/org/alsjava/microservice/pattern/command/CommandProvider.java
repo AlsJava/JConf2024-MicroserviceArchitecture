@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.HashMap;
 import java.util.Map;
 
-@ConditionalOnProperty(prefix = "general", name = "cqrs.enable", havingValue = "true")
+@ConditionalOnProperty(prefix = "pattern", name = "cqrs.enabled", havingValue = "true")
 @Component
 @Slf4j
 public class CommandProvider implements BeanPostProcessor {

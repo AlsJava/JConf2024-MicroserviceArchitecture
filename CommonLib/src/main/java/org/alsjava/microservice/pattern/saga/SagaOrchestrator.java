@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.concurrent.*;
 
-@ConditionalOnProperty(prefix = "general", name = "saga.enable", havingValue = "true")
+@ConditionalOnProperty(prefix = "pattern", name = "saga.enabled", havingValue = "true")
 @Slf4j
 @Component
 public class SagaOrchestrator {

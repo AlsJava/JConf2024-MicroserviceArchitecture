@@ -1,17 +1,15 @@
 spring:
   application:
-    name: ui-application
+    name: ui-service
   cloud:
     config:
+      uri: 'http://localhost:8001'
       discovery:
-        enabled: true
-        serviceId: configuration-service
-
+        service-id: configuration-service
 eureka:
   client:
-    serviceUrl:
-      defaultZone: ${eurekaUrl:http://host.docker.internal:7001/eureka}
-    registryFetchIntervalSeconds: 1
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:7001/eureka}
+#      defaultZone: ${EUREKA_URL:http://host.docker.internal:7001/eureka}
   instance:
-    hostname: localhost
-    leaseRenewalIntervalInSeconds: 1
+    prefer-ip-address: ${EUREKA_USE_IP:true}

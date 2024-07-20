@@ -8,7 +8,6 @@ import org.alsjava.microservice.model.request.GetUserRequest;
 import org.alsjava.microservice.model.request.UpdateUserRequest;
 import org.alsjava.microservice.model.response.*;
 import org.alsjava.microservice.pattern.command.CommandBus;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -20,9 +19,6 @@ public class UserService {
 
     private final CommandBus commandBus;
 
-    @Value("${kafka.users.get.topics.response}")
-    private String getUserResponseTopic;
-
     public GetUserResponse get(GetUserRequest getUserRequest) {
         log.info("Getting User : {}", getUserRequest.getId());
         return commandBus.sendCommand(GetUserCommand.builder()
@@ -30,11 +26,15 @@ public class UserService {
                 .build());
     }
 
-    public ListUserResponse list(int page, int size) {
+    public ListUserResponse list(int page, int pageSize) {
         return commandBus.sendCommand(GetUsersCommand.builder()
                 .page(page)
-                .size(size)
+                .pageSize(pageSize)
                 .build());
+    }
+
+    public Long count() {
+        return commandBus.sendCommand(CountUsersCommand.builder().build());
     }
 
     public CreateUserResponse create(CreateUserRequest createUserRequest) {

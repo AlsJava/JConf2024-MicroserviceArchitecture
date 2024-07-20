@@ -23,7 +23,7 @@ public class GetUsersCommandHandler implements CommandHandler<ListUserResponse, 
 
     @Override
     public ListUserResponse handle(GetUsersCommand command) {
-        PageRequest pageRequest = PageRequest.of(command.getPage(), command.getSize());
+        PageRequest pageRequest = PageRequest.of(command.getPage(), command. getPageSize());
         return ListUserResponse.builder().users(userRepository.findAll(pageRequest)
                 .stream()
                 .map(UserEntity::toDTO)

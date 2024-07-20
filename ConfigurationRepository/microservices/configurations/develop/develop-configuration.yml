@@ -6,7 +6,3 @@ spring:
         format_sql: true
   devtools:
     add-properties: true
-db:
-  h2:
-    debug:
-      enabled: true

@@ -20,8 +20,8 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class DeviceClient {
 
-    private final ReplyingKafkaTemplate<String, CreateDeviceRequest, CreateDeviceResponse> template;
-    @Value("${pattern.client.timeout}")
+    private final ReplyingKafkaTemplate<String, CreateDeviceRequest, CreateDeviceResponse> createDeviceReplyingTemplate;
+    @Value("${kafka.timeout}")
     private long clientTimeout;
 
     @Value("${kafka.devices.create.topics.request}")
@@ -29,7 +29,7 @@ public class DeviceClient {
 
     public CreateDeviceResponse sendCreateDevice(CreateDeviceRequest createDeviceRequest) {
         ProducerRecord<String, CreateDeviceRequest> record = new ProducerRecord<>(createDeviceRequestTopic, createDeviceRequest);
-        RequestReplyFuture<String, CreateDeviceRequest, CreateDeviceResponse> replyFuture = template.sendAndReceive(record);
+        RequestReplyFuture<String, CreateDeviceRequest, CreateDeviceResponse> replyFuture = createDeviceReplyingTemplate.sendAndReceive(record);
         try {
             SendResult<String, CreateDeviceRequest> sendResult = replyFuture.getSendFuture().get(clientTimeout, TimeUnit.SECONDS);
             sendResult.getProducerRecord().headers().forEach(header -> log.debug("Header -- {} :: {}", header.key(), header.value()));
