@@ -20,7 +20,7 @@ public class SagaFactory {
         sagaPayload.addProperty(CreateUserCommand.KEY, key);
         sagaPayload.addProperty(CreateUserCommand.COMMAND, depositCommand);
         return Saga.<CreateUserResponse>builder()
-                .name("Deposit SAGA")
+                .name("Create User with devices SAGA")
                 .key(key)
                 .payload(sagaPayload)
                 .requiredStep(List.of(
