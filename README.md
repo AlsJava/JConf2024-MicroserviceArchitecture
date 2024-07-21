@@ -6,16 +6,19 @@ Project repository to demostrate Microservice Architecture working.
 
 Have you had problems implementing microservices? Are some things more complex to solve and do you feel that it is a
 waste of resources? Well, come join this talk where we will talk about scaling, implementation and use of this
-beautiful architecture in today's applications
+beautiful architecture in today's applications. See [Deep Dive Into Microservices Architecture In Java Spring PDF](Documentation/presentation/DeepDiveIntoMicroservicesArchitectureInJavaSpring.pdf)
+
 
 ## Description
 
 Carrying out an implementation of this architecture is more complex than you can imagine, the fact of not knowing the
-concepts and foundation that compose it, leads to a partial or incomplete implementation, giving rise to problems that sometimes
+concepts and foundation that compose it, leads to a partial or incomplete implementation, giving rise to problems that
+sometimes
 In turn, they propose solutions that prevent the benefits of this architecture from being appreciated.
 
 Among the brightest features of micro-services applications; is its scaling (horizontal and vertical),
-since these applications scale automatically and on demand, and if the result of their implementation does not give way to
+since these applications scale automatically and on demand, and if the result of their implementation does not give way
+to
 this particular feature then we are faced with a case of a poor implementation of it.
 
 **The simple fact of not knowing fundamental concepts and/or elements that make up this architecture will lead you to a
@@ -25,18 +28,18 @@ With this talk, I seek to ensure that whoever decides to implement this type of 
 in a healthy way and in the correct scenarios, since you cannot always use it due to:
 
 - Application dimensions:
-  - Users quantity
-  - Costs
+    - Users quantity
+    - Costs
 - User needs in the application:
-  - Type of connections
-  - Legal restrictions with data
-  - Hardware limitations
+    - Type of connections
+    - Legal restrictions with data
+    - Hardware limitations
 - Other factors that will affect development:
-  - Code workflow
-  - Deployment of the code to environments
-  - Team experience (group and individual)
-  - Internal team training time
-  - Documentation habits
+    - Code workflow
+    - Deployment of the code to environments
+    - Team experience (group and individual)
+    - Internal team training time
+    - Documentation habits
 
 # Español
 
@@ -44,7 +47,7 @@ in a healthy way and in the correct scenarios, since you cannot always use it du
 
 ¿Has tenido problemas implementando micro servicios? ¿Algunas cosas son más complejas de resolver y sientes que es un
 desperdicio de recursos? Pues ven a unirte a este charla donde hablaremos del escalado, implementación y uso de esta
-hermosa arquitectura en las aplicaciones del hoy día
+hermosa arquitectura en las aplicaciones del hoy día. Ver [Deep Dive Into Microservices Architecture In Java Spring PDF](Documentation/presentation/DeepDiveIntoMicroservicesArchitectureInJavaSpring.pdf)
 
 ## Descripción
 
@@ -172,8 +175,8 @@ Remove a device from User Devices
 - [OpenAPI](https://springdoc.org/v2/) (Documentation)
 - Gateway (Kong or [Spring Gateway](https://spring.io/guides/gs/gateway/)) (With flows)
 - Kafka
-  - [Reply Pattern](https://dzone.com/articles/synchronous-kafka-using-spring-request-reply-1)
-  - [Retry Pattern](https://www.baeldung.com/spring-retry-kafka-consumer)
+    - [Reply Pattern](https://dzone.com/articles/synchronous-kafka-using-spring-request-reply-1)
+    - [Retry Pattern](https://www.baeldung.com/spring-retry-kafka-consumer)
 - Docker
 - Spring Boot
 - Vaadin (UI)
