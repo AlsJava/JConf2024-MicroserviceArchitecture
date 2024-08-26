@@ -1,9 +1,11 @@
 package org.alsjava.microservice.configuration;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
 @Slf4j
@@ -13,5 +15,16 @@ public class ObjectMapperConfiguration {
     @Bean
     public Jackson2ObjectMapperBuilder jackson2ObjectMapperBuilder() {
         return new Jackson2ObjectMapperBuilder().featuresToDisable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+    }
+
+    @Bean
+    @Primary
+    public ObjectMapper objectMapper()  {
+        return jackson2ObjectMapperBuilder().build();
+    }
+
+    @Bean
+    public XmlMapper xmlMapper()  {
+        return jackson2ObjectMapperBuilder().createXmlMapper(true).build();
     }
 }

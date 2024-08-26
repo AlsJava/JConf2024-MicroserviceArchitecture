@@ -1,5 +1,6 @@
 package org.alsjava.microservice.configuration;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -36,6 +37,16 @@ public class KafkaGeneralConfigurator {
 
     @Value("${kafka.timeout}")
     private long timeout;
+
+    @Bean
+    public <T> JsonSerializer<T> jsonSerializer(ObjectMapper objectMapper) {
+        return new JsonSerializer<>(objectMapper);
+    }
+
+    @Bean
+    public <T> JsonDeserializer<T> jsonDeserializer(ObjectMapper objectMapper) {
+        return new JsonDeserializer<>(objectMapper);
+    }
 
     /**
      * Default Consumer
